@@ -1,0 +1,828 @@
+/*
+ This file is part of Moodle - http://moodle.org/
+
+ Moodle is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ Moodle is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with Moodle. If not, see <http://www.gnu.org/licenses/>.
+*/
+/**
+ * masks module style sheet
+ *
+ * @copyright  2016 Edunao SAS (contact@edunao.com)
+ * @author     Sadge (daniel@edunao.com)
+ * @package    mod_masks
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+ 
+/*-----------------------------------------
+  General page layout
+*/
+
+#masks{
+    position: relative;
+    width: 100%;
+}
+
+#masks .masks-header{
+    position: relative;
+    display: inline-block;
+    padding: 0 0.25em 0.25em 0.25em;
+    background-color: #f0F0F0;
+    border-radius: 4px;
+    width:100%;
+    z-index: 2;
+}
+
+#masks .masks-body{
+    z-index: 1;
+}
+
+
+/*-----------------------------------------
+  Menu bar
+*/
+
+#masks .menu-bar{
+}
+
+#masks .menu-bar-group{
+    display: inline-block;
+    position:relative;
+    margin-right:1em;
+}
+
+#masks .menu-bar-group>div{
+    display: inline-block;
+    position:relative;
+    height: 1.2em;
+    margin-right:0.75em;
+    cursor: pointer;
+}
+
+#masks .action-button:hover,
+#masks .toggle-button:hover,
+#masks .menu-button:hover{
+    background:#F0F0F0;
+    border-radius:0.2em;
+    text-decoration:underline;
+}
+
+#masks .menu-button:hover,
+#masks .menu-button:hover>.nav-page-name{
+    text-decoration:underline;
+}
+
+#masks .menu-bar-group>div>img{
+    margin-right:0.25em;
+}
+
+#masks .menu-bar-group>div.menu-bar-group-title{
+    font-weight: bold;
+    cursor: default;
+}
+
+/*-----------------------------------------
+  Menu bar - context-dependent buttons
+*/
+
+#masks.hide-mask-actions-group .mask-actions-group{
+    display: none;
+}
+
+#masks.hide-layout-save-group .layout-save-group{
+    display: none;
+}
+
+/*-----------------------------------------
+  Menu bar - drop down menu buttons
+*/
+
+#masks .menu-button>img{
+    margin-left:0.25em;
+}
+
+#masks .menu-wrapper{
+    z-index: 2;
+}
+
+#masks .menu-button{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/*-----------------------------------------
+  Drop down menus
+*/
+
+#masks .menu-popup{
+    display: none;
+    position: absolute;
+    top: 100%;
+    margin-top: 5px;
+    border: solid black 1px;
+    background-color: white;
+    max-height: 20em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: inherit;
+}
+
+#masks .menu-entry{
+    position:relative;
+    display:inline-block;
+    left:0;
+    right:10px;
+    height:1em;
+    padding-top:0.25em;
+    padding-bottom:0.25em;
+    white-space:nowrap;
+    width:100%;
+}
+
+#masks .menu-bar .menu-entry{
+    padding-right: 0.5em;
+}
+
+#masks .page-nav .menu-entry{
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+}
+
+#masks .menu-entry:hover{
+    background:#F0F0F0;
+}
+
+#masks .menu-entry:hover,
+#masks .menu-entry:hover .nav-page-name{
+    text-decoration:underline;
+}
+
+#masks .menu-show .menu-popup{
+    display: block;
+}
+
+#masks .menu-entry img{
+    padding-left:0.5em;
+    padding-right:0.5em;
+}
+
+/*-----------------------------------------
+  Drop down menus - per menu configuration
+*/
+
+#masks #drop-down-add-mask{
+    padding-right: 0.5em;
+}
+
+#masks #drop-down-page-select{
+    left: -0.5em;
+}
+
+#masks #drop-down-options{
+    left: -1px;
+}
+
+
+/*-----------------------------------------
+  Page image area
+*/
+
+#masks-page-image{
+    width: 100%;
+}
+
+#masks .masks-body{
+    position: relative;
+    width: 100%;
+    top:0;
+    left:0;
+    margin:0;
+    padding:0;
+}
+
+#masks-page-space{
+    display:block;
+    position: relative;
+    width: 100%;
+    top:0;
+    left:0;
+    margin:0;
+    padding:0;
+}
+
+#masks.page-hidden #masks-masks{
+    background-color: #C0C0C0;
+    opacity: 0.75;
+}
+
+/*-----------------------------------------
+  Masks
+*/
+
+#masks-masks{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    margin:0;
+    padding:0;
+}
+
+#masks .mask-root{
+    position: absolute;
+}
+
+#masks .menu-entry .mask-root{
+    position: relative;
+    display: inline-block;
+    padding-left:0.25em;
+    width: 10em;
+    height: 2em;
+}
+
+#masks .mask-back,
+#masks .mask-main,
+#masks .mask-front{
+    position: absolute;
+    width:100%;
+    height:100%;
+}
+
+#masks.dragging-mask .selected-mask .mask-back,
+#masks.dragging-mask .selected-mask .mask-main,
+#masks.dragging-mask .selected-mask .mask-front{
+    opacity:0.75;
+}
+
+#masks .mask-front{
+    background-image: url([[pix:mod_masks|mask32bw]]);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#masks .masks-handle{
+    position: absolute;
+    top:0.25em;
+    left:0.25em;
+    bottom:0.25em;
+    right:0.25em;
+}
+
+#masks .masks-handle:hover{
+    border: solid red 2px;
+}
+
+#masks .masks-handle.l{
+    min-width:0.75em;
+    max-width:1.25em;
+    width:100%;
+    left:-1em;
+    cursor: ew-resize;
+}
+
+#masks .masks-handle.r{
+    min-width:0.75em;
+    max-width:1.25em;
+    width:100%;
+    right:-1em;
+    left:initial;
+    cursor: ew-resize;
+}
+
+#masks .masks-handle.t{
+    min-height:0.75em;
+    max-height:1.25em;
+    height:100%;
+    top:-1em;
+    cursor: ns-resize;
+}
+
+#masks .masks-handle.b{
+    min-height:0.75em;
+    max-height:1.25em;
+    height:100%;
+    bottom:-1em;
+    top:initial;
+    cursor: ns-resize;
+}
+
+#masks .masks-handle.t.l,
+#masks .masks-handle.b.r{
+    cursor: nwse-resize;
+}
+
+#masks .masks-handle.t.r,
+#masks .masks-handle.b.l{
+    cursor: nesw-resize;
+}
+
+#masks .masks-handle.m.c{
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    cursor: move;
+}
+
+#masks .selected-mask .mask-front{
+    background-color:yellow;
+}
+
+#masks .mask-root.mask-hidden div{
+    opacity:0.25;
+}
+
+#masks .mask-root.mask-hidden div.masks-handle.t,
+#masks .mask-root.mask-hidden div.masks-handle.l,
+#masks .mask-root.mask-hidden div.masks-handle.b,
+#masks .mask-root.mask-hidden div.masks-handle.r{
+    display:none;
+}
+
+#masks .mask-root.mask-hidden.selected-mask div{
+    opacity:0.5;
+}
+
+#masks .mask-root.mask-hidden div:hover{
+    opacity:1.0;
+}
+
+#masks .mask-root.mask-deleted .mask-layer{
+    opacity:0.25;
+}
+
+#masks .mask-root.mask-deleted .masks-handle.m.c{
+    background-image: url([[pix:i/invalid]]);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#masks .mask-root.mask-deleted div.masks-handle.t,
+#masks .mask-root.mask-deleted div.masks-handle.l,
+#masks .mask-root.mask-deleted div.masks-handle.b,
+#masks .mask-root.mask-deleted div.masks-handle.r{
+    display:none;
+}
+
+
+/*-----------------------------------------
+  Page nav
+*/
+
+#masks .page-nav{
+    float: right;
+}
+
+#masks .nav-button{
+    cursor: pointer;
+}
+
+#masks .nav-button:hover{
+    text-decoration:underline;
+    color:blue;
+    background:#F0F0F0;
+    border-radius: 0.1em;
+}
+
+#masks .nav-left{
+    margin-right: 0.4em;
+}
+
+#masks .nav-right{
+    margin-left: 0.4em;
+}
+
+#masks.first-page .nav-left,
+#masks.last-page .nav-right{
+    opacity: 0.25;
+    cursor:default;
+    background: inherit;
+    text-decoration:inherit;
+    color:inherit;
+}
+
+#masks .nav-page-name{
+    display:inline-block;
+    position:relative;
+    height:100%;
+    vertical-align:middle;
+}
+
+#masks .nav-page-name.page-hidden,
+#masks.page-hidden .menu-button .nav-page-name{
+    text-decoration: line-through;
+    color: lightgray;
+}
+
+#masks .nav-page-word{
+    padding-right:0.5em;
+}
+
+#masks-menu-page-select{
+    display: inline-block;
+    position:relative;
+    cursor: pointer;
+    height: 1.2em;
+    margin-left:0.25em;
+    margin-right:0.25em;
+}
+
+#masks-menu-page-select img{
+    margin-left:0;
+}
+
+/*-----------------------------------------
+  Toggles
+*/
+
+#masks .toggle-off{
+    display: inline;
+}
+
+#masks .toggle-on{
+    display: none;
+}
+
+#masks .toggle .toggle-off{
+    display: none;
+}
+
+#masks .toggle .toggle-on{
+    display: inline;
+}
+
+/*-----------------------------------------
+  Overlay
+*/
+
+#masks #page-overlay{
+    display:none;
+}
+
+#masks.have-popup #page-overlay{
+    display:block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index:3;
+}
+
+#masks #page-mask{
+    display:block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #E0E0E0;
+    opacity: 0.45;
+}
+
+#masks #popup-parent-iframe{
+    opacity: 0.0;
+    max-height: 1px;
+    overflow-y: visible;
+}
+
+#masks #popup-parent-iframe.popup-active{
+    max-width: none;
+    max-height: none;
+}
+
+#masks #popup-parent-iframe.loaded{
+    opacity: 1.0;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto
+}
+
+#masks #popup-mdl-frame{
+    width: 100%;
+    top:5em;
+    overflow-y: visible;
+    -webkit-transition: width 0.2s, height 0.2s; /* Safari */
+    transition: width 0.2s, height 0.2s;
+}
+
+/*-----------------------------------------
+  Mask styles - style 0
+*/
+
+#masks .mask-style-0 .mask-back{
+    margin-left:-4px;
+    margin-top:-4px;
+    border: solid white 4px;
+    border-radius: 0.5em;
+}
+
+#masks .mask-style-0 .mask-main{
+    margin-left:-2px;
+    margin-top:-2px;
+    border: solid black 2px;
+    border-radius: 0.5em;
+    background-color:#C0C0C0;
+}
+
+#masks .menu-entry .mask-style-0 .mask-front{
+    left:4px;
+    right:-4px;
+}
+
+#masks .mask-style-0 .mask-front:hover{
+    width:auto;
+    height:auto;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    border-radius: 0.5em;
+    border: inset #C0C0C0 3px;
+}
+
+/*-----------------------------------------
+  Mask styles - style 1
+*/
+
+#masks .mask-style-1 .mask-back{
+    margin-left:-4px;
+    margin-top:-4px;
+    border: solid white 4px;
+    border-radius: 0.5em;
+}
+
+#masks .mask-style-1 .mask-main{
+    margin-left:-2px;
+    margin-top:-2px;
+    border: solid black 2px;
+    border-radius: 0.5em;
+    background-color:white;
+}
+
+#masks .mask-style-1 .mask-front:hover{
+    width:auto;
+    height:auto;
+    top:1px;
+    left:1px;
+    right:1px;
+    bottom:1px;
+    border-radius: 0.5em;
+    border: dotted red 3px;
+}
+
+#masks .mask-style-1 .mask-front{
+    background-image: url([[pix:mod_masks|mask32wb]]);
+}
+
+#masks .menu-entry .mask-style-1 .mask-front{
+    left:6px;
+    right:-3px;
+}
+
+
+/*-----------------------------------------
+  Mask styles - style 2
+*/
+
+#masks .mask-style-2 .mask-back{
+    margin-left:-4px;
+    margin-top:-4px;
+    border: solid black 4px;
+    border-radius: 0.5em;
+}
+
+#masks .mask-style-2 .mask-main{
+    margin-left:-2px;
+    margin-top:-2px;
+    border: solid white 2px;
+    border-radius: 0.5em;
+    background-color:black;
+}
+
+#masks .mask-style-2 .mask-front:hover{
+    width:auto;
+    height:auto;
+    top:1px;
+    left:1px;
+    right:1px;
+    bottom:1px;
+    border-radius: 0.5em;
+    border: dashed red 3px;
+}
+
+#masks .menu-entry .mask-style-2 .mask-front{
+    left:6px;
+    right:-3px;
+}
+
+/*-----------------------------------------
+  Mask styles - style 3
+*/
+
+#masks .mask-style-3 .mask-back{
+    margin-left:-4px;
+    margin-top:-4px;
+    border: solid black 4px;
+    border-radius: 0.5em;
+}
+
+#masks .mask-style-3 .mask-main{
+    margin-left:-2px;
+    margin-top:-2px;
+    border: solid white 2px;
+    border-radius: 0.5em;
+    background-color:lightgreen;
+}
+
+#masks .mask-style-3 .mask-front:hover{
+    width:auto;
+    height:auto;
+    top:1px;
+    left:1px;
+    right:1px;
+    bottom:1px;
+    border-radius: 0.5em;
+    border: dashed black 3px;
+}
+
+#masks .menu-entry .mask-style-3 .mask-front{
+    left:6px;
+    right:-3px;
+}
+
+
+/*-----------------------------------------
+  Mask styles - style 4
+*/
+
+#masks .mask-style-4 .mask-back{
+    margin-left:-4px;
+    margin-top:-4px;
+    border: solid black 4px;
+    border-radius: 0.5em;
+}
+
+#masks .mask-style-4 .mask-main{
+    margin-left:-2px;
+    margin-top:-2px;
+    border: solid white 2px;
+    border-radius: 0.5em;
+    background-color:lightblue;
+}
+
+#masks .mask-style-4 .mask-front:hover{
+    width:auto;
+    height:auto;
+    top:1px;
+    left:1px;
+    right:1px;
+    bottom:1px;
+    border-radius: 0.5em;
+    border: dashed black 3px;
+}
+
+#masks .menu-entry .mask-style-4 .mask-front{
+    left:6px;
+    right:-3px;
+}
+
+
+/*-----------------------------------------
+  Mask styles - style 5
+*/
+
+#masks .mask-style-5 .mask-back{
+    margin-left:-4px;
+    margin-top:-4px;
+    border: solid black 4px;
+    border-radius: 0.5em;
+}
+
+#masks .mask-style-5 .mask-main{
+    margin-left:-2px;
+    margin-top:-2px;
+    border: solid yellow 2px;
+    border-radius: 0.5em;
+    background-color:black;
+}
+
+#masks .mask-style-5 .mask-front:hover{
+    background-color:yellow;
+}
+
+#masks .menu-entry .mask-style-5 .mask-front{
+    left:6px;
+    right:-3px;
+}
+
+/*-----------------------------------------
+  Mask styles - style 6
+*/
+
+#masks .mask-style-6 .mask-back{
+    margin-left:-4px;
+    margin-top:-4px;
+    border: solid black 4px;
+    border-radius: 0.5em;
+}
+
+#masks .mask-style-6 .mask-main{
+    margin-left:-2px;
+    margin-top:-2px;
+    border: solid cyan 2px;
+    border-radius: 0.5em;
+    background-color:black;
+}
+
+#masks .mask-style-6 .mask-front:hover{
+    background-color:cyan;
+}
+
+#masks .menu-entry .mask-style-6 .mask-front{
+    left:6px;
+    right:-3px;
+}
+
+
+/*-----------------------------------------
+  Mask styles - style 7
+*/
+
+#masks .mask-style-7 .mask-back{
+    margin-left:-4px;
+    margin-top:-4px;
+    border: solid black 4px;
+    border-radius: 0.5em;
+}
+
+#masks .mask-style-7 .mask-main{
+    margin-left:-2px;
+    margin-top:-2px;
+    border: solid magenta 2px;
+    border-radius: 0.5em;
+    background-color:black;
+}
+
+#masks .mask-style-7 .mask-front:hover{
+    background-color:magenta;
+}
+
+#masks .menu-entry .mask-style-7 .mask-front{
+    left:6px;
+    right:-3px;
+}
+
+/*-----------------------------------------
+  Mask styles - style 8
+*/
+
+#masks .mask-style-8 .mask-back{
+    margin-left:-4px;
+    margin-top:-4px;
+    border: solid black 4px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+#masks .mask-style-8 .mask-main{
+    margin-left:-2px;
+    margin-top:-2px;
+    border-radius: 100%;
+}
+
+#masks .mask-style-8 .mask-front{
+    border-radius: 100%;
+    background-image: url([[pix:mod_masks|mask64bw]]);
+    background-size: contain;
+}
+
+#masks .mask-style-8 .mask-front:hover{
+    margin-left:-2px;
+    margin-top:-2px;
+    border: solid red 2px;
+}
+
+#masks .menu-entry .mask-style-8 .mask-front{
+    left:6px;
+    right:-3px;
+}
+
+#masks .selected-mask.mask-style-8 .masks-handle.m.c{
+    border-radius: 0.5em;
+    background:yellow;
+    opacity:0.25;
+    border-radius: 100%;
+}
+
